@@ -10,49 +10,37 @@ namespace Esercizio_Telecom_Provider
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!\n\n");
+            //Effettua chiamate
+            /*            int i = 0;
+                        string confirm = "y";
+                        List<Telefonata> listaChiamate = new List<Telefonata>();
+                        do
+                        {
+                            Console.WriteLine("Inserisci numero da chiamare");
+                            string numeroDestinatario = Console.ReadLine();
+                            Console.WriteLine("Quanto è durata la chiamata?");
+                            int durataChiamata = int.Parse(Console.ReadLine());
 
+                            listaChiamate.Add(new Telefonata(numeroDestinatario, durataChiamata) { });
 
-            /*string numeroChiamato1 = "33312340101";
-            int durata1 = 15;*/
-            /*Telefonata chiamata1 = new Telefonata(numeroChiamato1, durata1);*/
+                            i++;
 
-
-
-            /*int ciao = telefonata1.MinutiChiamata();
-            Console.WriteLine($"\n La chiamata è durata {ciao} minuti");*/
-            int i = 0;
-            string confirm = "y";
-            List<Telefonata> listaChiamate = new List<Telefonata>();
-
-
-
-            do
-            {
-                Console.WriteLine("Inserisci numero da chiamare");
-                string numeroDestinatario = Console.ReadLine();
-                Console.WriteLine("Quanto è durata la chiamata?");
-                int durataChiamata = int.Parse(Console.ReadLine());
-
-                listaChiamate.Add(new Telefonata(numeroDestinatario, durataChiamata) { });
-
-                i++;
-
-                Console.WriteLine("\npremi y per effettuare un'altra chiamata");
-                confirm = Console.ReadLine();
-            } while (confirm == "y");
+                            Console.WriteLine("\npremi y per effettuare un'altra chiamata");
+                            confirm = Console.ReadLine();
+                        } while (confirm == "y");*/
 
 
 
 
+            //Stampa di tutte le chiamate
+            /*            i = 0;
+                        foreach (Telefonata chiamata in listaChiamate)
+                        {
+                            Console.WriteLine($"Chiamata {i + 1}:\nDestinatario: {listaChiamate[i].numeroDestinatario}.\t" +
+                                $" Durata: {listaChiamate[i].durataChiamata} minuti.");
+                            i++;
+                        }*/
 
-            i = 0;
-            foreach (Telefonata chiamata in listaChiamate)
-            {
-                Console.WriteLine($"Chiamata {i + 1}:\nDestinatario: {listaChiamate[i].numeroDestinatario}.\t" +
-                    $" Durata: {listaChiamate[i].durataChiamata} minuti.");
-                i++;
-            }
             /* Console.WriteLine("Inserisci numero SIM1");
              string numeroTelefonico = Console.ReadLine();
              Console.WriteLine("Inserisci credito residuo SIM1");
@@ -62,6 +50,15 @@ namespace Esercizio_Telecom_Provider
              { });
              Sim schedaSim1 = new Sim(numeroTelefonico, creditoResiduo, registroSim1);
         */
+            List<Telefonata> empty = new List<Telefonata>();
+            var sim = new Sim("0", 0 , empty);
+
+            sim.registraNuovaSim();
+
+            List<Telefonata> listaChiamate = sim.effettuaChiamate();
+
+            sim.stampaChiamate(listaChiamate);
+
 
 
 
@@ -69,8 +66,8 @@ namespace Esercizio_Telecom_Provider
             Console.WriteLine("Vuoi stampare i dati della sim1? Immetti" +
                         " 'Y' per confermare");
             string conferma = Console.ReadLine().Trim();
-            /*if (conferma.ToLower() == "y")
-            schedaSim1.stampaDatiSim();*/
+            if (conferma.ToLower() == "y")
+                sim.stampaDatiSim(sim.numeroSim, sim.creditoSim, listaChiamate);
         }
     }
 }
