@@ -20,20 +20,9 @@ namespace Esercizio_Telecom_Provider
             this.durataChiamata = durataChiamata;*/
 
             this.numeroDestinatario = numeroDestinatario;
-            this.durataChiamata = durataChiamata;
+            this.durataChiamata = duratachiamata;
      
         }
-
-/*        public Telefonata chiamaUnNumero()
-        {
-*//*            Console.WriteLine("Inserisci numero da chiamare");
-            string numeroDestinatario = Console.ReadLine();
-            Console.WriteLine("Quanto è durata la chiamata?");
-            int durataChiamata = int.Parse(Console.ReadLine());
-            *//*
-            var chiamata = new Telefonata();
-            return chiamata;
-        }*/
 
 
         //Possiamo scriverli come proprietà con get set 
