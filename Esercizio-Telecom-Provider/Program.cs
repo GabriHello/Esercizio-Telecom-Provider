@@ -51,13 +51,13 @@ namespace Esercizio_Telecom_Provider
              Sim schedaSim1 = new Sim(numeroTelefonico, creditoResiduo, registroSim1);
         */
             List<Telefonata> empty = new List<Telefonata>();
-            var sim = new Sim("0", 0 , empty);
+            var simVoid = new Sim("0", 0 , empty);
 
-            sim.registraNuovaSim();
+            var sim1 = simVoid.registraNuovaSim();
 
-            List<Telefonata> listaChiamate = sim.effettuaChiamate();
+            List<Telefonata> listaChiamate = sim1.effettuaChiamate();
 
-            sim.stampaChiamate(listaChiamate);
+            sim1.stampaChiamate(listaChiamate);
 
 
 
@@ -67,7 +67,7 @@ namespace Esercizio_Telecom_Provider
                         " 'Y' per confermare");
             string conferma = Console.ReadLine().Trim();
             if (conferma.ToLower() == "y")
-                sim.stampaDatiSim(sim.numeroSim, sim.creditoSim, listaChiamate);
+                sim1.stampaDatiSim(sim1.numeroSim, sim1.creditoSim, listaChiamate);
         }
     }
 }
