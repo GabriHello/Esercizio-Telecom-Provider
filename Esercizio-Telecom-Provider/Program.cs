@@ -20,11 +20,8 @@ namespace Esercizio_Telecom_Provider
                             string numeroDestinatario = Console.ReadLine();
                             Console.WriteLine("Quanto è durata la chiamata?");
                             int durataChiamata = int.Parse(Console.ReadLine());
-
                             listaChiamate.Add(new Telefonata(numeroDestinatario, durataChiamata) { });
-
                             i++;
-
                             Console.WriteLine("\npremi y per effettuare un'altra chiamata");
                             confirm = Console.ReadLine();
                         } while (confirm == "y");*/
@@ -58,7 +55,7 @@ namespace Esercizio_Telecom_Provider
 
                 sim1.creditoSim = sim1.ricaricaTelefonica(sim1.creditoSim);
 
-                List<Telefonata> listaChiamate = sim1.effettuaChiamate(sim1.creditoSim);
+                List<Telefonata> listaChiamate = sim1.effettuaChiamate(sim1);
 
                 sim1.stampaChiamate(listaChiamate);
 

@@ -57,16 +57,16 @@ namespace Esercizio_Telecom_Provider
 
 
         //Effettuare chiamate: possibile solo se il credito è superiore a 0.
-        public List<Telefonata> effettuaChiamate(decimal credito)
+        public List<Telefonata> effettuaChiamate(Sim scheda)
         {
-            
+
             int i = 0;
             string confirm = "y";
 
             List<Telefonata> listaChiamate = new List<Telefonata>();
 
 
-            if (credito > 0) //controllo credito
+            if (scheda.creditoSim > 0) //controllo credito
             {
                 do
                 {
@@ -79,11 +79,11 @@ namespace Esercizio_Telecom_Provider
 
 
                     listaChiamate.Add(new Telefonata(numeroDestinatario, durataChiamata, costoChiamata) { });
-                    
-                    credito -= costoChiamata;
-                    Console.WriteLine($"Credito residuo: {credito}");
 
-                    if (costoChiamata >= credito)
+                    scheda.creditoSim -= costoChiamata;
+                    Console.WriteLine($"Credito residuo: {scheda.creditoSim}");
+
+                    if (scheda.creditoSim <= 0)
                     {
                         Console.WriteLine("Hai finito il credito!!! Impossibile eseguire altre chiamate\n");
                         confirm = "n";

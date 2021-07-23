@@ -8,9 +8,7 @@ namespace Esercizio_Telecom_Provider
 {
     class Telefonata
     {
-        /*string numeroDestinatario;
-      int durataChiamata;*/
-
+        
         public string numeroDestinatario { get; }
         public int durataChiamata { get; }
         public decimal costoChiamata { get; }
@@ -26,6 +24,7 @@ namespace Esercizio_Telecom_Provider
 
         }
 
+        //APPUNTI -------------------------------------------
 
         //Possiamo scriverli come proprietà con get set 
         /*public int MinutiChiamata()
@@ -39,6 +38,6 @@ namespace Esercizio_Telecom_Provider
         }*/
         /*public string numeroDestinatario { get; set; }
         public int durataChiamata { get; set; }*/
-
+        //---------------------------------------------------
     }
 }
