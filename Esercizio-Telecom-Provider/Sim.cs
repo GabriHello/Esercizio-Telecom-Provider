@@ -11,8 +11,8 @@ namespace Esercizio_Telecom_Provider
 
         List<Telefonata> listaTelefonate = new List<Telefonata>();
         public string numeroSim { get; }
-        public float creditoSim { get; }
-        public Sim(string numeroSim, float creditoSim, List<Telefonata> listaTelefonate)
+        public decimal creditoSim { get; }
+        public Sim(string numeroSim, decimal creditoSim, List<Telefonata> listaTelefonate)
         {
             this.numeroSim = numeroSim;
             this.creditoSim = creditoSim;
@@ -25,7 +25,7 @@ namespace Esercizio_Telecom_Provider
                 "Numero: ");
             string numeroSim = Console.ReadLine();
             Console.WriteLine("\nCredito Residuo");
-            float creditoSim = float.Parse(Console.ReadLine());
+            decimal creditoSim = decimal.Parse(Console.ReadLine());
             Console.WriteLine("\nRegistro chiamate VUOTO");
             List<Telefonata> listaTelefonate = new List<Telefonata>();
             var nuovaSim = new Sim(numeroSim, creditoSim, listaTelefonate);
@@ -42,8 +42,13 @@ namespace Esercizio_Telecom_Provider
 */
        
 
-        public void stampaDatiSim(string numeroSim, float creditoSim, List<Telefonata> registroChiamate)
+        public void stampaDatiSim(string numeroSim, decimal creditoSim, 
+            List<Telefonata> registroChiamate)
         {
+            foreach(Telefonata telefonata in registroChiamate)
+            {
+                creditoSim -= telefonata.costoChiamata;
+            }
 
             Console.WriteLine("\nNumero della sim: " + numeroSim);
             Console.WriteLine("\nIl credito residuo è di " + creditoSim + " euro.");
@@ -54,7 +59,8 @@ namespace Esercizio_Telecom_Provider
             {
                 Console.WriteLine($"{++i}:\t"
                     + telefonata.numeroDestinatario + " - "
-                    + telefonata.durataChiamata + " minuti.");
+                    + telefonata.durataChiamata + " minuti " 
+                    + telefonata.costoChiamata +"€");
                 i++;
             }
         }
@@ -67,16 +73,14 @@ namespace Esercizio_Telecom_Provider
             int i = 0;
             string confirm = "y";
             List<Telefonata> listaChiamate = new List<Telefonata>();
-
             do
             {
                 Console.WriteLine("Inserisci numero da chiamare");
                 string numeroDestinatario = Console.ReadLine();
                 Console.WriteLine("Quanto è durata la chiamata?");
                 int durataChiamata = int.Parse(Console.ReadLine());
-
-                listaChiamate.Add(new Telefonata(numeroDestinatario, durataChiamata) { });
-
+                decimal costoChiamata = durataChiamata * 0.2m;
+                listaChiamate.Add(new Telefonata(numeroDestinatario, durataChiamata, costoChiamata) { });            
                 i++;
 
                 Console.WriteLine("\npremi y per effettuare un'altra chiamata");
@@ -93,7 +97,7 @@ namespace Esercizio_Telecom_Provider
             foreach (Telefonata chiamata in listaChiamate)
             {
                 Console.WriteLine($"Chiamata {i + 1}:\nDestinatario: {listaChiamate[i].numeroDestinatario}.\t" +
-                    $" Durata: {listaChiamate[i].durataChiamata} minuti.");
+                    $" Durata: {listaChiamate[i].durataChiamata} minuti.\tCosto: {listaChiamate[i].costoChiamata}");
                 i++;
             }
         }

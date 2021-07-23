@@ -13,7 +13,8 @@ namespace Esercizio_Telecom_Provider
 
         public string numeroDestinatario { get; }
         public int durataChiamata { get; }
-        public Telefonata(string numeroDestinatario, int duratachiamata)
+        public decimal costoChiamata { get; }
+        public Telefonata(string numeroDestinatario, int duratachiamata, decimal costoChiamata)
         {
             //Se io inserisco numero e durata nel costruttore, sono costretto a usarli entrambi (una chiamata ha destinatario E durata)
             /*this.numeroDestinatario = numeroDestinatario;
@@ -21,7 +22,8 @@ namespace Esercizio_Telecom_Provider
 
             this.numeroDestinatario = numeroDestinatario;
             this.durataChiamata = duratachiamata;
-     
+            this.costoChiamata = costoChiamata;
+
         }
 
 

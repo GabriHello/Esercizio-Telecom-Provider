@@ -29,9 +29,6 @@ namespace Esercizio_Telecom_Provider
                             confirm = Console.ReadLine();
                         } while (confirm == "y");*/
 
-
-
-
             //Stampa di tutte le chiamate
             /*            i = 0;
                         foreach (Telefonata chiamata in listaChiamate)
@@ -59,15 +56,14 @@ namespace Esercizio_Telecom_Provider
 
             sim1.stampaChiamate(listaChiamate);
 
-
-
-
             //Richiesta stampa dati sim
             Console.WriteLine("Vuoi stampare i dati della sim1? Immetti" +
                         " 'Y' per confermare");
             string conferma = Console.ReadLine().Trim();
             if (conferma.ToLower() == "y")
                 sim1.stampaDatiSim(sim1.numeroSim, sim1.creditoSim, listaChiamate);
+
+
         }
     }
 }
