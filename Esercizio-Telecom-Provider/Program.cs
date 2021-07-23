@@ -47,21 +47,31 @@ namespace Esercizio_Telecom_Provider
              { });
              Sim schedaSim1 = new Sim(numeroTelefonico, creditoResiduo, registroSim1);
         */
-            List<Telefonata> empty = new List<Telefonata>();
-            var simVoid = new Sim("0", 0 , empty);
+            string quit = "";
+            do
+            {
 
-            var sim1 = simVoid.registraNuovaSim();
+                List<Telefonata> empty = new List<Telefonata>();
+                var simVoid = new Sim("0", 0, empty);
 
-            List<Telefonata> listaChiamate = sim1.effettuaChiamate();
+                var sim1 = simVoid.registraNuovaSim();
 
-            sim1.stampaChiamate(listaChiamate);
+                sim1.creditoSim = sim1.ricaricaTelefonica(sim1.creditoSim);
 
-            //Richiesta stampa dati sim
-            Console.WriteLine("Vuoi stampare i dati della sim1? Immetti" +
-                        " 'Y' per confermare");
-            string conferma = Console.ReadLine().Trim();
-            if (conferma.ToLower() == "y")
-                sim1.stampaDatiSim(sim1.numeroSim, sim1.creditoSim, listaChiamate);
+                List<Telefonata> listaChiamate = sim1.effettuaChiamate(sim1.creditoSim);
+
+                sim1.stampaChiamate(listaChiamate);
+
+                //Richiesta stampa dati sim
+                Console.WriteLine("\n\nVuoi stampare i dati della sim1? Immetti" +
+                            " 'Y' per confermare");
+                string conferma = Console.ReadLine().Trim();
+                if (conferma.ToLower() == "y")
+                    sim1.stampaDatiSim(sim1.numeroSim, sim1.creditoSim, listaChiamate);
+
+                Console.WriteLine("\nScrivi Quit per uscire, altrimenti ripeti");
+                quit = Console.ReadLine();
+            } while (quit.ToLower() != "quit");
 
 
         }
