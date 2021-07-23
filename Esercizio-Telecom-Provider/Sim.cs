@@ -61,7 +61,6 @@ namespace Esercizio_Telecom_Provider
                     + telefonata.numeroDestinatario + " - "
                     + telefonata.durataChiamata + " minuti " 
                     + telefonata.costoChiamata +"€");
-                i++;
             }
         }
 
