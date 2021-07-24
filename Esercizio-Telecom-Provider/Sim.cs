@@ -36,10 +36,10 @@ namespace Esercizio_Telecom_Provider
         public void stampaDatiSim(string numeroSim, decimal creditoSim,
             List<Telefonata> registroChiamate)
         {
-            foreach (Telefonata telefonata in registroChiamate)
+            /*foreach (Telefonata telefonata in registroChiamate)
             {
                 creditoSim -= telefonata.costoChiamata;
-            }
+            }*/
 
             Console.WriteLine("\nNumero della sim: " + numeroSim);
             Console.WriteLine("\nIl credito residuo è di " + creditoSim + " euro.");
