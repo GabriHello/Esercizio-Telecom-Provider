@@ -44,33 +44,49 @@ namespace Esercizio_Telecom_Provider
              { });
              Sim schedaSim1 = new Sim(numeroTelefonico, creditoResiduo, registroSim1);
         */
-            string quit = "";
+
+            string operation = "";
+
+            List<Telefonata> empty = new List<Telefonata>();
+            var simVoid = new Sim("0", 0, empty);
+            var sim1 = simVoid.registraNuovaSim();
             do
             {
+                Console.WriteLine("\nScegli tra le seguenti operazioni:" +
+                    "\n0: Effettua una ricarica telefonica" +
+                    "\n1: Effettua chiamate verso altri numeri" +
+                    "\n2: Stampa il dettaglio delle chiamate e dei costi" +
+                    "\n3: Stampa dati sim e registro chiamate" +
+                    "\nQuit: USCIRE");
+                Console.WriteLine("------------------------------------------------");
+                operation = Console.ReadLine().Trim();
+                switch (operation)
+                {
+                    case "0":
+                        sim1.creditoSim = sim1.ricaricaTelefonica(sim1.creditoSim);
+                        break;
 
-                List<Telefonata> empty = new List<Telefonata>();
-                var simVoid = new Sim("0", 0, empty);
+                    case "1":
+                        List<Telefonata> listaChiamate = sim1.effettuaChiamate(sim1);
+                        break;
 
-                var sim1 = simVoid.registraNuovaSim();
+                    case "2":
+                        listaChiamate = sim1.listaTelefonate;
+                        sim1.stampaChiamate(listaChiamate);
+                        break;
 
-                sim1.creditoSim = sim1.ricaricaTelefonica(sim1.creditoSim);
+                    case "3":
+                        listaChiamate = sim1.ottieniChiamate(sim1);
+                        List<string> registroChiamate = new List<string>();
+                        registroChiamate = sim1.creaRegistroChiamate(listaChiamate);
+                        sim1.stampaDatiSim(sim1.numeroSim, sim1.creditoSim, registroChiamate);
+                        break;
 
-                List<Telefonata> listaChiamate = sim1.effettuaChiamate(sim1);
+                    default:
+                        break;
 
-                sim1.stampaChiamate(listaChiamate);
-
-                //Richiesta stampa dati sim
-                List<string> registroChiamate = new List<string>();
-                registroChiamate = sim1.creaRegistroChiamate(listaChiamate);
-                Console.WriteLine("\n\nVuoi stampare i dati della sim1? Immetti" +
-                            " 'Y' per confermare");
-                string conferma = Console.ReadLine().Trim();
-                if (conferma.ToLower() == "y")
-                    sim1.stampaDatiSim(sim1.numeroSim, sim1.creditoSim, registroChiamate);
-
-                Console.WriteLine("\nScrivi Quit per uscire, altrimenti ripeti");
-                quit = Console.ReadLine().Trim();
-            } while (quit.ToLower() != "quit");
+                }
+            } while (operation.ToLower() != "quit");
 
 
         }
