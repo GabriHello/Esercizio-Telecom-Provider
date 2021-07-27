@@ -9,9 +9,10 @@ namespace Esercizio_Telecom_Provider
     class Telefonata
     {
         
-        public string numeroDestinatario { get; }
+        public string numeroDestinatario { get; set; }
         public int durataChiamata { get; }
         public decimal costoChiamata { get; }
+
         public Telefonata(string numeroDestinatario, int duratachiamata, decimal costoChiamata)
         {
             //Se io inserisco numero e durata nel costruttore, sono costretto a usarli entrambi (una chiamata ha destinatario E durata)

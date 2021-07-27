@@ -11,6 +11,8 @@ namespace Esercizio_Telecom_Provider
         List<Telefonata> listaTelefonate = new List<Telefonata>();
         public string numeroSim { get; }
         public decimal creditoSim { get; set; }
+
+
         public Sim(string numeroSim, decimal creditoSim, List<Telefonata> listaTelefonate)
         {
             this.numeroSim = numeroSim;
@@ -30,21 +32,23 @@ namespace Esercizio_Telecom_Provider
             var nuovaSim = new Sim(numeroSim, creditoSim, listaTelefonate);
             return nuovaSim;
         }
-        
+
         public List<Telefonata> creaRegistroChiamate(List<Telefonata> listaChiamate)
         {
             List<Telefonata> registroChiamate = new List<Telefonata>();
 
-            int i = 0;
-
-            foreach(Telefonata chiamata in listaChiamate)
+            //controllare se il numero chiamato è già presente nella lista
+            //se è unico, aggiungerlo alla lista
+            //se non è unico, conto quante volte è ripetuto, e aggiungere una stringa ottenuta dal conteggio
+            //di volte in cui è stata trovata
+            for (int i = 0; i<listaChiamate.Count; i++)
             {
-                //controllare se il numero chiamato è già presente nella lista
-                //se è unico, aggiungerlo alla lista
-                //se non è unico, contre quante volte è ripetuto, e aggiungere una stringa ottenuta dal conteggio
-                //di volte in cui è stata trovata
+                foreach(Telefonata chiamata in listaChiamate)
+                {
 
+                }
             }
+
 
             return registroChiamate;
         }

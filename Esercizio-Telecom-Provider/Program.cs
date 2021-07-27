@@ -60,11 +60,13 @@ namespace Esercizio_Telecom_Provider
                 sim1.stampaChiamate(listaChiamate);
 
                 //Richiesta stampa dati sim
+                List<Telefonata> registroChiamate = new List<Telefonata>();
+                registroChiamate = sim1.creaRegistroChiamate(listaChiamate);
                 Console.WriteLine("\n\nVuoi stampare i dati della sim1? Immetti" +
                             " 'Y' per confermare");
                 string conferma = Console.ReadLine().Trim();
                 if (conferma.ToLower() == "y")
-                    sim1.stampaDatiSim(sim1.numeroSim, sim1.creditoSim, listaChiamate);
+                    sim1.stampaDatiSim(sim1.numeroSim, sim1.creditoSim, registroChiamate);
 
                 Console.WriteLine("\nScrivi Quit per uscire, altrimenti ripeti");
                 quit = Console.ReadLine().Trim();
