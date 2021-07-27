@@ -33,28 +33,43 @@ namespace Esercizio_Telecom_Provider
             return nuovaSim;
         }
 
-        public List<Telefonata> creaRegistroChiamate(List<Telefonata> listaChiamate)
+        public List<string> creaRegistroChiamate(List<Telefonata> listaChiamate)
         {
-            List<Telefonata> registroChiamate = new List<Telefonata>();
-
-            //controllare se il numero chiamato è già presente nella lista
-            //se è unico, aggiungerlo alla lista
-            //se non è unico, conto quante volte è ripetuto, e aggiungere una stringa ottenuta dal conteggio
-            //di volte in cui è stata trovata
-            for (int i = 0; i<listaChiamate.Count; i++)
+            int indicericerca = 0;
+            List<string> registroChiamate = new List<string>();
+            int[] contatori = new int[listaChiamate.Count];
+            registroChiamate.Add(new string(listaChiamate[0].numeroDestinatario) { });
+            string tempCall = "";
+            
+            for(int i = 0; i<listaChiamate.Count; i++)
             {
-                foreach(Telefonata chiamata in listaChiamate)
-                {
-
-                }
+                contatori[i] = 1;
             }
 
+            for(int i = 1; i < listaChiamate.Count; i++)
+            {
+                tempCall = "";
+                if(registroChiamate.Contains(listaChiamate[i].numeroDestinatario))
+                {
+                    tempCall = listaChiamate[i].numeroDestinatario;
+                    indicericerca = registroChiamate.IndexOf(tempCall);
+                    contatori[indicericerca]++;
+                }
+                else 
+                    registroChiamate.Add(new string(listaChiamate[i].numeroDestinatario));
+                
+            }
+
+            for(int i = 0; i<registroChiamate.Count; i++)
+            {
+                if (contatori[i] > 1) registroChiamate[i] += $"({contatori[i]})";
+            }
 
             return registroChiamate;
         }
 
         public void stampaDatiSim(string numeroSim, decimal creditoSim,
-            List<Telefonata> registroChiamate)
+            List<string> registroChiamate)
         {
             int i = 0;
             /*foreach (Telefonata telefonata in registroChiamate)
@@ -67,12 +82,9 @@ namespace Esercizio_Telecom_Provider
 
             Console.WriteLine("\nRegistro chiamate:");
             i = 0;
-            foreach (Telefonata telefonata in registroChiamate)
+            foreach (string telefonata in registroChiamate)
             {
-                Console.WriteLine($"{++i}:\t"
-                    + telefonata.numeroDestinatario + " - "
-                    + telefonata.durataChiamata + " minuti "
-                    + telefonata.costoChiamata + "€");
+                Console.WriteLine($"{++i}:\t" + telefonata);
             }
         }
 
