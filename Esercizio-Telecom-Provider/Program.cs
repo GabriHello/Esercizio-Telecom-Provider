@@ -67,7 +67,7 @@ namespace Esercizio_Telecom_Provider
                     sim1.stampaDatiSim(sim1.numeroSim, sim1.creditoSim, listaChiamate);
 
                 Console.WriteLine("\nScrivi Quit per uscire, altrimenti ripeti");
-                quit = Console.ReadLine();
+                quit = Console.ReadLine().Trim();
             } while (quit.ToLower() != "quit");
 
 

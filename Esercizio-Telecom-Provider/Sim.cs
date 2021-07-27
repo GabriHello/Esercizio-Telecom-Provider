@@ -8,7 +8,6 @@ namespace Esercizio_Telecom_Provider
 {
     class Sim
     {
-
         List<Telefonata> listaTelefonate = new List<Telefonata>();
         public string numeroSim { get; }
         public decimal creditoSim { get; set; }
@@ -31,11 +30,29 @@ namespace Esercizio_Telecom_Provider
             var nuovaSim = new Sim(numeroSim, creditoSim, listaTelefonate);
             return nuovaSim;
         }
+        
+        public List<Telefonata> creaRegistroChiamate(List<Telefonata> listaChiamate)
+        {
+            List<Telefonata> registroChiamate = new List<Telefonata>();
 
+            int i = 0;
+
+            foreach(Telefonata chiamata in listaChiamate)
+            {
+                //controllare se il numero chiamato è già presente nella lista
+                //se è unico, aggiungerlo alla lista
+                //se non è unico, contre quante volte è ripetuto, e aggiungere una stringa ottenuta dal conteggio
+                //di volte in cui è stata trovata
+
+            }
+
+            return registroChiamate;
+        }
 
         public void stampaDatiSim(string numeroSim, decimal creditoSim,
             List<Telefonata> registroChiamate)
         {
+            int i = 0;
             /*foreach (Telefonata telefonata in registroChiamate)
             {
                 creditoSim -= telefonata.costoChiamata;
@@ -45,7 +62,7 @@ namespace Esercizio_Telecom_Provider
             Console.WriteLine("\nIl credito residuo è di " + creditoSim + " euro.");
 
             Console.WriteLine("\nRegistro chiamate:");
-            int i = 0;
+            i = 0;
             foreach (Telefonata telefonata in registroChiamate)
             {
                 Console.WriteLine($"{++i}:\t"
