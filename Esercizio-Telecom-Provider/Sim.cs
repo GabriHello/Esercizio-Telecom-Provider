@@ -8,9 +8,9 @@ namespace Esercizio_Telecom_Provider
 {
     class Sim
     {
-        public List<Telefonata> listaTelefonate { get; set; } = new List<Telefonata>();
         public string numeroSim { get; }
         public decimal creditoSim { get; set; }
+        public List<Telefonata> listaTelefonate { get; set; } = new List<Telefonata>();
 
 
         public Sim(string numeroSim, decimal creditoSim, List<Telefonata> listaTelefonate)
@@ -108,20 +108,12 @@ namespace Esercizio_Telecom_Provider
             List<string> registroChiamate)
         {
             int i = 0;
-            /*foreach (Telefonata telefonata in registroChiamate)
-            {
-                creditoSim -= telefonata.costoChiamata;
-            }*/
-
             Console.WriteLine("\nNumero della sim: " + numeroSim);
             Console.WriteLine("\nIl credito residuo è di " + creditoSim + " euro.");
-
             Console.WriteLine("\nRegistro chiamate:");
             i = 0;
             foreach (string telefonata in registroChiamate)
-            {
                 Console.WriteLine($"{++i}:\t" + telefonata);
-            }
             Console.WriteLine("------------------------------------------------");
         }
 
